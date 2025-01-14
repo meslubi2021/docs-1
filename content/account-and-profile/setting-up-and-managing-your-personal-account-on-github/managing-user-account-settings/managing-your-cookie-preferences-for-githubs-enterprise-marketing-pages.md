@@ -4,7 +4,6 @@ intro: 'You can control how {% data variables.product.company_short %} uses info
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 topics:
   - Accounts
@@ -15,7 +14,7 @@ redirect_from:
 
 ## About cookie preferences on enterprise marketing pages
 
-{% data variables.product.company_short %} may use non-essential cookies on some enterprise marketing pages. You can customize how these cookies behave. For more information about how {% data variables.product.company_short %} uses cookies, see "[AUTOTITLE](/free-pro-team@latest/site-policy/privacy-policies/github-privacy-statement)."
+{% data variables.product.company_short %} may use non-essential cookies on some enterprise marketing pages. You can customize how these cookies behave. For more information about how {% data variables.product.company_short %} uses cookies, see [AUTOTITLE](/free-pro-team@latest/site-policy/privacy-policies/github-privacy-statement).
 
 ## Changing your cookie preferences
 

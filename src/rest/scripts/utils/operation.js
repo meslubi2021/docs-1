@@ -8,7 +8,7 @@ import { renderContent } from '#src/content-render/index.js'
 import getCodeSamples from './create-rest-examples.js'
 import operationSchema from './operation-schema.js'
 import { validateJson } from '#src/tests/lib/validate-json-schema.js'
-import { getBodyParams } from './get-body-params.js'
+import { getBodyParams } from './get-body-params'
 
 export default class Operation {
   #operation
@@ -45,11 +45,10 @@ export default class Operation {
     this.subcategory = operation['x-github'].subcategory
     this.parameters = operation.parameters || []
     this.bodyParameters = []
-    this.enabledForGitHubApps = operation['x-github'].enabledForGitHubApps
     return this
   }
 
-  async process() {
+  async process(progAccessData) {
     await Promise.all([
       this.codeExamples(),
       this.renderDescription(),
@@ -57,6 +56,7 @@ export default class Operation {
       this.renderParameterDescriptions(),
       this.renderBodyParameterDescriptions(),
       this.renderPreviewNotes(),
+      this.programmaticAccess(progAccessData),
     ])
 
     const { isValid, errors } = validateJson(operationSchema, this)
@@ -185,5 +185,9 @@ export default class Operation {
       console.error(error)
       throw new Error(`Error rendering preview notes for ${this.verb} ${this.requestPath}`)
     }
+  }
+
+  programmaticAccess(progAccessData) {
+    this.progAccess = progAccessData[this.#operation.operationId]
   }
 }

@@ -1,3 +1,5 @@
+import { describe, expect, test } from 'vitest'
+
 import { runRule } from '../../lib/init-test.js'
 import { listFirstWordCapitalization } from '../../lib/linting-rules/list-first-word-capitalization.js'
 
@@ -54,6 +56,7 @@ describe(listFirstWordCapitalization.names.join(' - '), () => {
       '- @mention your friends',
       '- @hash tags',
       '- 05:00',
+      '- "keyword" starts with a quotation sign',
     ].join('\n')
     const result = await runRule(listFirstWordCapitalization, { strings: { markdown } })
     const errors = result.markdown
